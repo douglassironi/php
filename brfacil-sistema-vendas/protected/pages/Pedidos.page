@@ -1,0 +1,110 @@
+<com:TContent ID="Main" >
+
+<com:TActivePanel id="tab_pedido" >
+ <com:TActiveLabel id="msgCab" />
+<com:TActivePanel id="pedidos" >
+<com:TActiveLabel id="pedido" />
+ <div class="form-group">
+    <label for="mesa">Mesa</label>
+   	<com:TTextBox ID="mesa"  cssclass="form-control" Attributes.placeholder="Mesa"/>
+</div>
+
+<div class="form-group">
+    <label for="fone">Telefone</label>
+ 	<com:TActiveTextBox ID="fone"  cssclass="form-control" Attributes.placeholder="Telefone" />
+   <com:TActiveButton id="bt_busca_cli" oncallback="buscaDadosClientes" Text="Verifica Telefone"/>
+
+</div>   	
+
+<com:TActiveHiddenField id="clientesCodigo" />   	
+ <div class="form-group">
+    <label for="cliente">Cliente</label>
+    <com:TTextBox ID="cliente" cssclass="form-control" Attributes.placeholder="Nome do Cliente"/>
+</div>   	
+
+ <div class="form-group">
+    <label for="endereco">Endere&ccedil;o</label>
+    <com:TTextBox ID="endereco" cssclass="form-control" Attributes.placeholder="Endere&ccedil;o do Cliente" />
+</div>   	
+
+ <div class="form-group">
+    <label for="cidade">Cidade</label>
+    <com:TActiveDropDownList ID="cidade" cssclass="form-control"  /> 
+
+</div>   	
+
+<com:TCustomValidator
+	    ControlToValidate="mesa"
+	    ErrorMessage="Pedido de tele entrega, informe Cliente, Endereco e telefone."
+	    Display="Dynamic"
+	    id="validate_campos"
+	    cssclass="form-control alert-danger"
+	    OnServerValidate="serverValidate" />	
+	     
+<com:TActiveLinkButton id="btItens" Text="Itens do Pedido" cssClass="btn btn-primary btn-right " onCallBack="addPessoas" />
+
+</com:TActivePanel> 
+
+<com:TActivePanel id="tab_it_pedido"  visible="false" >
+ <h3>Pedido:<com:TActiveLabel id="pedidoLBL" /> Cliente:<com:TActiveLabel id="ClienteLBL" /></h3>
+
+  <label class="control-label" for="categorias">Categoria</label>
+   <com:TActiveDropDownList ID="categorias" cssclass="form-control" OnCallback="listaProdutos"  />
+
+  <label class="control-label" for="produto">Produto</label>
+   <com:TActiveDropDownList ID="lst_produto" cssclass="form-control" OnCallback="mostraInsumos"  />
+
+   <com:TActivePanel id="tab_insumos" >
+   Retirar algum insumo?
+   </br>
+   <com:TActiveCheckBoxList 
+	  id="produtosck" 
+	   AutoPostBack="true"
+	   DataTextField="descricao"
+       DataValueField="codigo"
+     />
+   
+   
+   </com:TActivePanel>
+   
+ <!--    <label class="control-label" for="quantidade">Quantidade</label>
+     	<com:TTextBox ID="quantidade" cssclass="form-control" /> -->
+  </br>
+
+   <com:TActiveButton id="btAdd" Text="Adicionar" cssClass="btn btn-success btn " OnCallBack="additem" />  
+   <div class="btn btn-primary" data-toggle="modal" data-target="#imagemProd">Imagem</div> 
+   <com:TActiveButton id="btFinalizar" Text="Finalizar" cssClass="btn btn-success btn " OnClick="finalizarPedido" />  
+   
+   </div>  
+  <com:TActiveLabel id="msg"/>
+  </div>  
+   <div class="modal fade" id="imagemProd" tabindex="-1" role="dialog" aria-labelledby="Imagem Produto" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Sair</span></button>
+        <h4 class="modal-title" id="DadosdoClienteModalLabel">Imagem Produto</h4>
+      </div>
+      <div class="modal-body">
+      	  <div class="form-group">
+			<label>	
+			  <label for="documento_cliente" id="ltipo_pagamento"></label>
+			 </label>
+			  <com:TActiveImage id="imagem_produto" />
+			   	 
+		  </div>	
+	
+	  </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>   	
+  </br></br>
+</com:TActivePanel> 
+
+ 
+</com:TActivePanel> 
+</div>
+</com:TContent>

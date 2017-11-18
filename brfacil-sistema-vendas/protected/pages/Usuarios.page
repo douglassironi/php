@@ -1,0 +1,119 @@
+<com:TContent ID="Main">
+<com:TActivePanel id="tab_produtos" >
+<com:TActivePanel id="tab_dados" >
+
+<com:TActivePanel id="produtos" >
+	 <div class="form-group">
+	  <div class="input-group">
+	   	<com:TActiveTextBox ID="busca"  cssclass="form-control" Attributes.placeholder="Busca Usuarios" OnTextChanged="popula_grid"/>
+	   	<span class="input-group-btn">
+	   	 <com:TButton cssclass="btn btn-primary" Text="Buscar" OnClick="popula_grid"/>
+        </span>
+        </div>	   	
+ 	 </div> 
+ 	 <div class="btn btn-primary btn-lg" data-toggle="modal" data-target="#forma_de_pagamento">Adicionar Usuarios</div>     
+     </br>
+     </br>
+ </com:TActivePanel>
+ <com:TDataGrid
+    ID="data_grid"
+    DataKeyField="codigo"
+    AutoGenerateColumns="false"
+    HeaderStyle.BackColor="black"
+    HeaderStyle.ForeColor="white"
+    CssClass="table table-striped"
+    OnEditCommand="editItem"
+    OnUpdateCommand="saveItem"
+    OnCancelCommand="cancelItem"
+    OnDeleteCommand="deleteItem"
+    PageSize="6"
+    >
+
+   <com:TBoundColumn
+        ID="nome_grid"
+        HeaderText="Nome"
+        DataField="nome"
+        />
+   <com:TBoundColumn
+        ID="username_grid"
+        HeaderText="Username"
+        DataField="username"
+        />
+        
+   <com:TBoundColumn
+        ID="comissao_grid"
+        HeaderText="Perc. Comissão"
+        DataField="perc_comissao"
+        />
+
+<com:TEditCommandColumn
+        HeaderText=""
+        HeaderStyle.Width="100px"
+        UpdateText="Salvar"
+        ItemStyle.HorizontalAlign="Center"
+        ItemStyle.Font.Italic="false"
+        />
+
+    <com:TButtonColumn
+        ID="DeleteColumn"
+        HeaderText=""
+        HeaderStyle.Width="50px"
+        ItemStyle.HorizontalAlign="Center"
+        ItemStyle.Font.Italic="false"
+        Text="Excluir"
+        
+        CommandName="delete"
+        />
+        
+</com:TDataGrid>
+  </div>  
+   <div class="modal fade" id="forma_de_pagamento" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Sair</span></button>
+        <h4 class="modal-title" id="DadosdoClienteModalLabel">Cadastro de Usuários</h4>
+      </div>
+      <div class="modal-body">
+		 
+		  <div class="form-group">
+			  <label for="Nome" id="ldescricao">Nome do Usuário</label>
+			  <com:TTextBox id="nome" cssclass="form-control" />
+		  </div>
+		       
+		  <div class="form-group">
+			  <label for="username" id="lvalor_compra">Usuário</label>
+			  <com:TTextBox id="username" cssclass="form-control" />
+		  </div>     
+
+		  <div class="form-group">
+			  <label for="passwd" id="lpasswd">Senha</label>
+			  <com:TTextBox id="passwd" TextMode="Password"  cssclass="form-control" />
+		  </div>     
+		  
+		  <div class="form-group">
+			  <label for="perc_comissao" id="lcomissao">Perc. Comissão</label>
+			  <com:TTextBox id="perc_comissao" cssclass="form-control" />
+		  </div>     
+
+		  
+		  <div class="form-group">
+			  <label for="roles_usuarios" id="lroles_usuarios">Role Usuário</label>
+			   <com:TDropDownList id="roles_usuarios" cssclass="form-control" />
+		  </div>
+	  </div>
+      <div class="modal-footer bg-primary">
+   	    <com:TButton cssclass="btn btn-primary" Text="Confirmar" OnClick="bt_salvar"/>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Sair</button>
+      </div>
+    </div>
+  </div>
+</div>   	
+
+
+</com:TActivePanel>
+
+</com:TActivePanel>
+
+
+</com:TContent>

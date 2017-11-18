@@ -1,0 +1,16 @@
+<com:TContent ID="Main">
+<div class="btn-toolbar">
+ <com:TRepeater id="mesas" >
+  <prop:ItemTemplate> 
+     <a href="<%= $this->Service->constructUrl('PedidosPagamentos')%>&ped=<%# $this->data->codigo%>" >
+   <button type="button" class="btn btn-primary btn-lg btn-block" >
+       <span class="glyphicon glyphicon-cutlery"></span> Mesa: <%# $this->data->mesa %> Pedido:<%# $this->data->codigo %>
+   </button>
+     </a>          
+   </prop:ItemTemplate>
+</com:TRepeater >   
+
+
+	
+ 
+</com:TContent>

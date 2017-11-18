@@ -1,0 +1,90 @@
+<com:TContent ID="Main">
+
+ <com:TActiveLabel id="mesa" />
+ 
+ <div class="btn btn-primary btn-lg" data-toggle="modal" data-target="#mdl_forma_de_pagamento">Pagamento </div> 
+ <com:TActiveButton id="bt_imprimir" cssclass="btn btn-primary btn-lg" text="Imprimir Pedido" oncallback="bt_imprimir_pedido"/>
+ <com:TActiveButton id="bt_cupom" cssclass="btn btn-primary btn-lg" text="NFC-e" oncallback="bt_imprimir_cupom" enabled="false"/>
+</br></br></br>
+ <div class="panel panel-primary">
+
+  <div class="panel-heading">Itens do Pedido</div>
+ <table class="table" >
+  <tr>
+  <com:TRepeater id="itenspedidos">
+  <prop:ItemTemplate>
+       <a href="<%= $this->Service->constructUrl('PedidosPagamentos')%>&ped=<%# $this->data->pedidos_codigo%>&it=<%# $this->data->codigo%>" >
+      <button type="button" class=<%# $this->data->status_item == "C"?'"btn btn-danger btn-lg btn-block"' : '"btn btn-success btn-lg btn-block"'%> >
+      <p><%# $this->data->produtos->descricao%></p>  R$<%# number_format($this->data->valor,2,',','.');%>  <%# $this->data->status_item == "C"?"Cancelado":"Aguardando Pagamento"%>
+   </button>
+     </a>          
+</prop:ItemTemplate>
+  </com:TRepeater>
+  
+  <tr class="alert alert-success" role="alert">
+  
+  <td><h2>  <strong>Valor Total Pedido:</h2></strong></td>
+  <td> <h2> <strong>R$<com:TActiveLabel id="total" /></strong></h2></td>
+  <td></td>
+  </tr>  
+  </table>   
+</div>
+</div>
+	
+ 
+  <div class="modal fade" id="mdl_forma_de_pagamento" tabindex="-1" role="dialog" aria-labelledby="Forma de Pagamento" aria-hidden="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Sair</span></button>
+        <h4 class="modal-title" id="PagamentoModalLabel">Finalizar Pedido</h4>
+      </div>
+      <div class="modal-body">
+         <com:TActiveLabel id="msg" />
+      
+      	  <div class="form-group">
+			<label>	
+			  <label for="documento_cliente" id="ltipo_pagamento">Forma de Pagamento</label>
+			 </label>
+			 
+			   <com:TActiveDropDownList id="forma_pagamento" cssclass="form-control" />
+			   	 
+		  </div>
+	
+      	  <div class="form-group">
+			<label>	
+			  <label for="documento" id="ltipo_pagamento">Documento</label>
+			 </label>
+			 
+			   <com:TTextBox id="Documento" cssclass="form-control" />
+			   	 
+		  </div>
+      	  <div class="form-group">
+			<label>	
+			  <label for="valor_documento" id="ltipo_pagamento">Valor Pago</label>
+			 </label>
+			 
+			   <com:TActiveTextBox id="valor_documento" cssclass="form-control"  />
+						   	
+		  </div>
+      	  <div class="form-group">
+			<label>	
+			  <label for="valor_troco" id="ltipo_pagamento">Valor Troco</label>
+			 </label>
+			 
+			   <com:TActiveTextBox id="valor_troco" cssclass="form-control" Enabled="false"  />
+						   	
+		  </div>
+
+	  </div>
+      <div class="modal-footer">
+        <com:TActiveButton cssclass="btn btn-primary" id="bt_calcula" onCallBack="bt_finaliza_pedido" Text="Efetuar Pagamento" />
+        <com:TActiveButton cssclass="btn btn-primary" id="bt_confirma" onCallBack="bt_confirma" Text="Confirmar" />
+      </div>
+    </div>
+  </div>
+</div>   	
+ 
+ 
+ 
+</com:TContent>

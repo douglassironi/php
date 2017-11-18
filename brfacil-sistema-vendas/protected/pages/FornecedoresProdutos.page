@@ -1,0 +1,30 @@
+<com:TContent ID="Main">
+ <com:TActivePanel id="pn_1" >
+       	  <div class="form-group">
+			  <label for="fornecedores" id="lfornecedores">Fornecedores</label>
+			   <com:TActiveDropDownList id="fornecedores" cssclass="form-control" OnCallBack="popula_produtos"/>
+
+			   <com:TRequiredFieldValidator
+               ValidationGroup="valida"
+               InitialValue="-1"
+               ControlToValidate="fornecedores"
+               Text="Deve ser informado um fornecedor" />    
+		  </div>
+    <com:TActivePanel id="pn_2" >
+		  
+       	  <div class="form-group">
+			  <label for="produtos" id="lprodutos">Produtos</label>
+			   <com:TActiveCheckBoxList id="produtos" cssclass="form-control" />
+
+			   <com:TRequiredFieldValidator
+               ValidationGroup="valida"
+               InitialValue="-1"
+               ControlToValidate="produtos"
+               Text="Deve ser informado um produto" />    
+		  </div>
+    </com:TActivePanel>		  
+   	    <com:TButton cssclass="btn btn-primary btn-lg" Text="Salvar" OnClick="btSalvar" ValidationGroup="valida"/>
+		  
+</com:TActivePanel>
+
+</com:TContent>

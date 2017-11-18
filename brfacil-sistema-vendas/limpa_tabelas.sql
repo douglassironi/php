@@ -1,0 +1,15 @@
+DELETE FROM `categorias`;
+DELETE FROM `engenharias_componentes`;
+DELETE FROM `engenharias_produtos`;
+DELETE FROM `fornecedores_produtos`;
+DELETE FROM `insumos_retirados_pedidos`;
+DELETE FROM `itens_pedidos`;
+DELETE FROM `movimentacoes_consumos_pedidos`;
+DELETE FROM `parametros`;
+DELETE FROM `pedidos`;
+DELETE FROM `pessoas`;
+DELETE FROM `produtos`;
+DELETE FROM `roles`;
+DELETE FROM `tipos_produtos`;
+DELETE FROM `usuarios`;
+DELETE FROM `usuarios_roles`;

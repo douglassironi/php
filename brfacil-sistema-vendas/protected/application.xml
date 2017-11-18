@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<application id="sgs"  mode="Debug">
+	<paths>
+		<using namespace="System.Data.*" />
+		<using namespace="System.Data.ActiveRecord.*" />
+		<using namespace="System.Data.ActiveRecord.Scaffold.*" />
+		<using namespace="System.Web.UI.ActiveControls.*" />
+		<using namespace="System.I18N.*" />
+	   	<using namespace="Application.common.*" />
+	   	<using namespace="Application.common.phpqrcode.*" />
+ 	    <using namespace="Application.common.fpdf17.*" />
+		<using namespace="Application.database.*" />
+		<using namespace="Application.*" />
+		<using namespace="Application.layout.*" />
+
+	</paths>
+		<module id="cache" class="System.Caching.TDbCache" />
+
+	<modules>
+		<module id="db" class="System.Data.TDataSourceConfig">
+			<database
+				ConnectionString="mysql:host=localhost;dbname=brfacil"
+				Username="" Password="" />
+		</module>
+
+
+	   <module id="users" class="System.Security.TDbUserManager"
+	   UserClass="Application.common.Usuario" ConnectionID="db" />
+
+	   <module id="auth" class="System.Security.TAuthManager"
+	        UserManager="users" LoginPage="Login" />
+
+		<module class="System.Data.ActiveRecord.TActiveRecordConfig" ConnectionID="db" />
+
+
+		<module id="response" class="System.Web.THttpResponse"
+			BufferOutput="true" />
+
+		<module id="globalization" class="TGlobalizationAutoDetect" />
+		<module id="log" class="System.Util.TLogRouter">
+			<route class="TFirebugLogRoute" Levels="Success,Warning, Error, Fatal" />
+		</module>
+	</modules>
+
+	<services>
+		<service id="page" class="TPageService" DefaultPage="Home">
+			<pages MasterClass="Application.layout.MainLayout" />
+		</service>
+		 <service id="wsat" class="System.Wsat.TWsatService" Password="" />
+	</services>
+</application>

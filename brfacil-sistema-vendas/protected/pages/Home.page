@@ -1,0 +1,6 @@
+<com:TContent ID="Main">
+  <div style="background:black">
+        <center>  <com:TActiveLabel id="logo" /></center>
+  </div>
+ Usuário: <strong><%=$this->user->name%></strong>
+</com:TContent>

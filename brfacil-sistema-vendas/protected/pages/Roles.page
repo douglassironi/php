@@ -1,0 +1,4 @@
+<com:TContent ID="Main">
+<com:TScaffoldView id="Roles" RecordClass="RolesRecord" EnableDefaultStyle="false" />
+
+</com:TContent>

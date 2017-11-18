@@ -1,0 +1,95 @@
+<com:TContent ID="Main">
+<com:TActivePanel id="tab_produtos" >
+<com:TActivePanel id="tab_dados" >
+<com:TActivePanel id="produtos" >
+
+ 	
+ <div class="form-group">
+        <label for="fornecedores">Fornecedor</label>
+		<com:TActiveDropDownList id="fornecedores" cssclass="form-control" OnCallBack="popula_produtos"/>
+</div>   	
+
+<com:TActiveButton id="btVerificarEstoqueMinimo" Text="Verificar Estoque Minimo" OnCallBack="btVerificaEstoqueMinimo" cssClass="btn btn-primary btn-lg" />
+<com:TActiveButton id="btCalcularDemanda" Text="Calcular Demanda" OnCallBack="btVerificaDemanda" cssClass="btn btn-primary btn-lg" />
+
+</com:TActivePanel >
+
+ <div class="form-group">
+ <com:TDataGrid
+    ID="produto_grid"
+    DataKeyField="codigo"
+    AutoGenerateColumns="false"
+    HeaderStyle.BackColor="black"
+    HeaderStyle.ForeColor="white"
+    CssClass="table table-striped"
+    OnEditCommand="editItem"
+    OnUpdateCommand="saveItem"
+    OnCancelCommand="cancelItem"
+    OnDeleteCommand="deleteItem"
+    PageSize="6"
+    >
+     
+   <com:TBoundColumn
+        ID="descricao_grid"
+        HeaderText="Descricao"
+        DataField="descricao"
+        />
+        
+   <com:TDropDownListColumn 
+        ID="categoria_grid"
+        HeaderText="Categorias"
+        DataTextField="categoria.descricao"
+        
+        />
+        
+   <com:TBoundColumn
+        ID="valor_grid"
+        HeaderText="Valor Compra"
+        DataField="valor_compra"
+        />
+
+   
+   <com:TBoundColumn
+        ID="quantidade_grid"
+        HeaderText="Quantidade"
+        DataField="quantidade_estoque"
+        />
+
+   
+   <com:TBoundColumn
+        ID="quantidade_min_grid"
+        HeaderText="Quantidade Min"
+        DataField="quantidade_minima"
+        />
+
+<com:TEditCommandColumn
+        HeaderText=""
+        HeaderStyle.Width="100px"
+        UpdateText="Save"
+        ItemStyle.HorizontalAlign="Center"
+        ItemStyle.Font.Italic="false"
+        />
+
+    <com:TButtonColumn
+        ID="DeleteColumn"
+        HeaderText=""
+        HeaderStyle.Width="50px"
+        ItemStyle.HorizontalAlign="Center"
+        ItemStyle.Font.Italic="false"
+        Text="Excluir"
+        
+        CommandName="delete"
+        />
+        
+
+</com:TDataGrid>
+</div>   	
+
+
+
+<com:TActiveButton id="btGerarPedido" Text="Gerar Pedido Compra" OnCallBack="btGerarPedidoCompra" cssClass="btn btn-primary btn-lg" />
+
+</br>
+</com:TActivePanel>
+</com:TActivePanel>
+</com:TContent>

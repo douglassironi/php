@@ -1,0 +1,4 @@
+<com:TContent ID="Main">
+<com:TScaffoldView id="cidades" RecordClass="CidadesRecord" EnableDefaultStyle="false" />
+
+</com:TContent>

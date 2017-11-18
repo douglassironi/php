@@ -1,0 +1,10 @@
+
+<com:TContent ID="Main">
+  
+  				<canvas id="myChart" width="400" height="400" />
+
+  
+  
+  <com:TLabel id="grafico" />
+
+</com:TContent>

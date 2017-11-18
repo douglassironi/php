@@ -1,0 +1,21 @@
+<com:TContent ID="Main">
+<com:TActivePanel id="pedidos" >
+<!--
+<com:TDropDownList id="cozinha" OnSelectedIndexChanged="PedidosAbertos" />
+-->
+<div class="btn-toolbar">
+ <com:TRepeater id="itpd" >
+  <prop:ItemTemplate> 
+     <a href="<%= $this->Service->constructUrl('PedidosCozinha')%>&it=<%# $this->data->codigo%>" >
+     <button type="button" class=<%# $this->data->status_item == "A"?'"btn btn-primary btn-lg btn-block"' : '"btn btn-success btn-lg btn-block"'%> >
+      <span class="glyphicon glyphicon-cutlery"></span> Mesa:<%# $this->data->pedido->mesa %>  Hora: <%# substr($this->data->pedido->data_hora,11)%>   Produto:<%# $this->data->produtos->descricao%>  Status:<%# $this->data->status_item == "A"?"Aguardando":$this->data->status_item == "I"?"Impresso":"Em atendimento"%>
+   </button>
+     </a>          
+   </prop:ItemTemplate>
+</com:TRepeater >   
+</div>
+</com:TActivePanel>
+
+	
+ 
+</com:TContent>

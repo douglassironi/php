@@ -1,0 +1,119 @@
+<com:TContent ID="Main">
+<style>
+.cart {
+    border: 1px solid #E8A400;
+    background-color: white;
+    padding: 8px;
+    width: 300px;
+    height: 50px;
+}
+ 
+.cart-hover {
+    background-color: #E8A400;
+}
+ 
+.cart-items {
+    width: 30px;
+    height: 30px;
+}
+ 
+.products {
+    float: left;
+    margin-right: 10px;
+}
+ 
+.draggable {
+    cursor: move
+}
+ 
+.removable {
+}
+ 
+.trash {
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+}
+ 
+</style>
+
+<com:TActiveLabel id="msg"/>
+
+<com:TActivePanel id="eng_tab" >
+ <com:TActivePanel id="eng_tab2" >
+ <div class="form-group">
+    <label for="codigo">Codigo</label>
+    <com:TTextBox ID="codigo" cssclass="form-control" enabled="false"/>
+</div>   	
+ <div class="form-group">
+    <label for="descricao">Descri&ccedil;&atilde;o</label>
+    <com:TTextBox ID="descricao" cssclass="form-control" Attributes.placeholder="Descricao do Produto"/>
+</div>   	
+ <div class="form-group">
+    <label for="valor">Valor de Venda</label>
+    <com:TTextBox ID="valor" cssclass="form-control" Attributes.placeholder="Valor de Venda"/>
+</div>   	
+ <div class="form-group">
+    <label for="categoria">Categoria</label>
+    <com:TActiveDropDownList ID="categoria" cssclass="form-control" Attributes.placeholder="Escolha uma categoria"/>
+</div>   	
+
+</com:TActivePanel>   
+<h3>Produtos:</h3>
+ 
+<div style="margin-bottom: 10px; height: 10px">
+ 
+<com:TRepeater Id="ProductList" DataKeyField="ProductId">
+    <prop:ItemTemplate>
+        <com:TDraggable CssClass="products draggable" >
+        <span class="label label-success"><com:TLabel Text=<%#$this->Data['descricao']%> /> </span>
+        </com:TDraggable>
+    </prop:ItemTemplate>
+</com:TRepeater>
+</div>
+<table>
+<tr>
+<td>
+<h2>Insumos:</h2>
+<com:TDropContainer CssClass="cart" Id="cart"
+    AcceptCssClass="draggable" 
+    HoverCssClass="cart-hover"
+    OnDrop="addItemToCart"
+    OnCallback="redrawCart"
+    >
+    <com:TRepeater id="ShoppingList" DataKeyField="ProductId">
+        <prop:EmptyTemplate>
+            Coloque os insumos do produto aqui.
+        </prop:EmptyTemplate>
+        <prop:ItemTemplate>
+            <com:TDraggable CssClass="removable" 
+                Revert="true" 
+                Handle="<%=$this->Data['descricao']%>" 
+                Ghosting=<%#($this->Data['ProductCount'] > 1)%> 
+                >
+          
+             <span class="label label-success"> <com:TLabel id="itemTitle" Text=<%#$this->Data['descricao']%>/>
+            <com:TLabel id="itemCount" Text="(<%#$this->Data['ProductCount']%>)" /> </span>
+            </com:TDraggable>
+        </prop:ItemTemplate>
+    </com:TRepeater>
+</com:TDropContainer>
+</td>
+<td>
+
+<h2>Eliminar:</h2>
+<com:TDropContainer CssClass="cart" id="trash"
+    AcceptCssClass="removable"
+    OnDrop="removeItemFromCart"
+    OnCallback="redrawCart"
+    HoverCssClass="trash-hover"
+>
+<span class="glyphicon glyphicon-trash"></span>
+</com:TDropContainer>
+</td>
+</tr>
+</table>
+</br>
+<com:TActiveButton cssclass="btn btn-primary " id="bt_Salvar" Text="Salvar" oncallback="btSalvar"/>
+</com:TActivePanel>   
+</com:TContent>

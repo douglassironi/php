@@ -1,0 +1,16 @@
+<com:TContent ID="Main">
+<com:TActivePanel id="pnl" >
+ <div class="form-group">
+    <label for="endereco">Informe a URL</label>
+    <com:TTextBox ID="dado" cssclass="form-control" Attributes.placeholder="URL" />
+</div>   
+ <div class="form-group">
+<com:TActiveButton id="btAtualiza" Text="Gerar QRCode" OnCallBack="btGeraQRcode" cssClass="btn btn-primary btn-lg" />
+</div>   
+ <div class="form-group">
+ <com:TActiveImage id="img" Data="/tmp/QR_code.png" />
+ </div>
+</br>
+</br>
+</com:TActivePanel>
+</com:TContent>

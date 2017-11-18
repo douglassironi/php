@@ -1,0 +1,5 @@
+<com:TContent ID="Main">
+
+ <com:TScaffoldView EnableDefaultStyle="false"  id="scafoldCozinhas"  RecordClass="CozinhasRecord" />
+
+</com:TContent>
